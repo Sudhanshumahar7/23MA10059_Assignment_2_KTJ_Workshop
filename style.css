@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.topBar{
+    background-image: linear-gradient(to bottom,#000719,#111f4d);
+    width: 100%;
+}
+.heading{
+    text-align: center;
+    color: #57ecfe;
+    font-size: 6vh;
+}
+.gameBody{
+    background-image: radial-gradient(circle at bottom, #0a274b, #00071a);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.game{
+    height: 75vh;
+    width: 75vh;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5vmin;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxToPlay{
+    border-radius: 2vh;
+    margin-bottom: 1vmin;
+    height: 20vmin;
+    width: 20vmin;
+    background-color: #a8fbfa;
+    border: 2vmin solid #c8ffff;
+    color: red;
+    font-size: 4rem;
+}
+@media screen and (max-width: 600px) {
+    .game {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 51vh;
+        width: 40vh;
+    }
+    .boxToPlay {
+        margin-bottom: 0vmin;
+        height: 26vmin;
+        width: 26vmin
+    }
+}
+#resetButton{
+    background-color: #151122;
+    color: white;
+    width: 17vmin;
+    height: 5vmin;
+    margin-bottom: 10vmin;
+}
+.player{
+    color: #96fdfc;
+    padding: 2vmin;
+}
+.footer{
+    background-image: linear-gradient(to top,#000719,#111f4d);
+    height: 11vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Thankyou{
+    color:#69cecb;
+}
+.underlines{
+    height: 1vmin;
+    
+}
+.links{
+    display: flex;
+    gap: 2vmin;
+    color: #9df7f4;
+    font-size: 1.25rem;
+}
+.result{
+    text-align: center;
+    font-Size: 2rem;
+}
+
+.winnersmodal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  .winnerdeclare {
+    background-image: radial-gradient(circle, #0a274b, #00071a);
+    margin: 15% auto;
+    padding: 5px;
+    border: 1px solid #888;
+    width: 40vh;
+    color: #a8fbfa;
+    height: 10vh;
+    width: 20vw;
+    border-radius: 2vh;
+  }
+  .close {
+    color: black;
+    background-color: #0a274b;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  @media screen and (max-width: 600px) {
+    .player{
+        margin-top:10vmin;
+        margin-bottom: 5vmin;
+    }
+    #resetButton{
+        margin-top:5vh;
+    }
+    
+
+}
