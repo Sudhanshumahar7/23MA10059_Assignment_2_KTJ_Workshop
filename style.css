@@ -10,6 +10,7 @@
     text-align: center;
     color: #57ecfe;
     font-size: 6vh;
+    line-height: calc(font-Size*1.5vmin);
 }
 .gameBody{
     background-image: radial-gradient(circle at bottom, #0a274b, #00071a);
@@ -38,7 +39,7 @@
     width: 20vmin;
     background-color: #a8fbfa;
     border: 2vmin solid #c8ffff;
-    color: red;
+    color:#3f5492;
     font-size: 4rem;
 }
 @media screen and (max-width: 600px) {
@@ -89,11 +90,6 @@
     color: #9df7f4;
     font-size: 1.25rem;
 }
-.result{
-    text-align: center;
-    font-Size: 2rem;
-}
-
 .winnersmodal {
     display: none;
     position: fixed;
@@ -108,12 +104,12 @@
   .winnerdeclare {
     background-image: radial-gradient(circle, #0a274b, #00071a);
     margin: 15% auto;
-    padding: 5px;
+    padding: 5;
     border: 1px solid #888;
     width: 40vh;
     color: #a8fbfa;
-    height: 10vh;
-    width: 20vw;
+    height: 15vh;
+    width: 25vw;
     border-radius: 2vh;
   }
   .close {
@@ -122,7 +118,20 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    position: relative;
+    top: 1vh;
+    right: 1vh;
+
   }
+  .result{
+    text-align: center;
+    font-Size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+}
+
   @media screen and (max-width: 600px) {
     .player{
         margin-top:10vmin;
@@ -131,6 +140,8 @@
     #resetButton{
         margin-top:5vh;
     }
-    
-
+    .winnerdeclare{
+        height: 15vh;
+        width: 60vw;
+    }
 }
