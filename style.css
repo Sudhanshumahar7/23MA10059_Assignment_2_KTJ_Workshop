@@ -30,6 +30,8 @@
     gap: 1.5vmin;
     justify-content: center;
     align-items: center;
+    gap: 6.5vh;
+    margin-bottom: 5vmin;
 }
 
 .boxToPlay{
@@ -41,6 +43,7 @@
     border: 2vmin solid #c8ffff;
     color:#3f5492;
     font-size: 4rem;
+    gap: 1vh;
 }
 @media screen and (max-width: 600px) {
     .game {
@@ -121,7 +124,6 @@
     position: relative;
     top: 1vh;
     right: 1vh;
-
   }
   .result{
     text-align: center;
@@ -145,3 +147,69 @@
         width: 60vw;
     }
 }
+.leaderboard{
+    display: flex;
+    flex-direction: row;
+    height: 7vmin;
+    justify-content: space-evenly;
+    font-size: 3vmin;
+    border-bottom: 1vmin solid #0a274b;
+    color: #3f5492;
+    background-image: radial-gradient(circle, #0a274b, #00071a);
+}
+.matchWonByPlayers{
+    padding: 0vmin 1vmin 0vmin 1vmin;
+    height:auto;
+    width: fit-content;
+    background-color: #a8fbfa;
+    text-align: center;
+}
+
+.resetmodal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  .resetconfirmation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2.5vmin;
+    background-image: radial-gradient(circle, #0a274b, #00071a);
+    margin: 15% auto;
+    padding: 5;
+    border: 1px solid #888;
+    width: 40vh;
+    color: #a8fbfa;
+    height: 15vh;
+    width: 25vw;
+    border-radius: 2vh;
+  }
+  .askingbtn{
+    display: flex;
+    gap: 10vmin;
+  }
+  .resetmsg{
+    font-size: 3vmin;
+  }
+  #resetSure{
+    background-color: #151122;
+    color: white;
+    width: fit-content;
+    height: 3vmin;
+    padding: 0.5vmin 1vmin 0.5vmin 1vmin;
+  }
+  #cancel {
+    background-color: #151122;
+    color: white;
+    width: fit-content;
+    height: 3vmin;
+    padding: 0.5vmin 1vmin 0.5vmin 1vmin;
+  }
