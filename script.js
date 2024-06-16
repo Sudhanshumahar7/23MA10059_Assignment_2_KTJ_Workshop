@@ -28,36 +28,36 @@ const patternsOfWin = [
     [3, 5, 7]
 ];
 
+let nameOfPlayer1 = prompt("Enter Player 1's Name:") || "Player 1";
+let nameOfPlayer2 = prompt("Enter Player 2's Name:") || "Player 2";
+let player1 = true;
 let won1 = localStorage.getItem('won1') ? parseInt(localStorage.getItem('won1')) : 0;
 let won2 = localStorage.getItem('won2') ? parseInt(localStorage.getItem('won2')) : 0;
+
 lbplayer1.innerText = `Match(s) won by ${nameOfPlayer1}: ${won1}`;
 lbplayer2.innerText = `Match(s) won by ${nameOfPlayer2}: ${won2}`;
+player.innerText = `First turn: ${nameOfPlayer1}`;
 
 const predictionOfWinner = () => {
-    for (let truple of patternsOfWin) {
-        if ((turn[truple[0] - 1].innerText != "") && (turn[truple[1] - 1].innerText != "") && (turn[truple[2] - 1].innerText != "")) {
-            if ((turn[truple[0] - 1].innerText === turn[truple[1] - 1].innerText) && (turn[truple[1] - 1].innerText === turn[truple[2] - 1].innerText)) {
-                if (player1) {
-                    modal.style.display = "block";
-                    results.innerText = `${nameOfPlayer2} wins`;
-                    turn.forEach(box => {
-                        box.disabled = true;
-                    });
-                    won2++;
-                    localStorage.setItem('won2', won2);
-                    wonBy2.innerText = won2;
-                } else {
-                    modal.style.display = "block";
-                    results.innerText = `${nameOfPlayer1} wins`;
-                    turn.forEach(box => {
-                        box.disabled = true;
-                    });
-                    won1++;
-                    localStorage.setItem('won1', won1);
-                    wonBy1.innerText = won1;
-                }
-                return;
+    for (let pattern of patternsOfWin) {
+        let [a, b, c] = pattern;
+        if (turn[a - 1].innerText && turn[a - 1].innerText === turn[b - 1].innerText && turn[a - 1].innerText === turn[c - 1].innerText) {
+            modal.style.display = "block";
+            let winner = turn[a - 1].innerText === "X" ? nameOfPlayer1 : nameOfPlayer2;
+            results.innerText = `${winner} wins`;
+            turn.forEach(box => {
+                box.disabled = true;
+            });
+            if (turn[a - 1].innerText === "X") {
+                won1++;
+                localStorage.setItem('won1', won1);
+                wonBy1.innerText = won1;
+            } else {
+                won2++;
+                localStorage.setItem('won2', won2);
+                wonBy2.innerText = won2;
             }
+            return;
         }
     }
     IsMatchTie();
@@ -119,29 +119,16 @@ resetscoreSure.onclick = function() {
     resetscorefunc();
 }
 
-let player1 = true;
-let nameOfPlayer1 = prompt("Enter your Name:");
-let nameOfPlayer2 = prompt("Enter your Name:");
-if (nameOfPlayer1 === null) {
-    nameOfPlayer1 = "Player 1";
-}
-if (nameOfPlayer2 === null) {
-    nameOfPlayer2 = "Player 2";
-}
-lbplayer1.innerText = `Match(s) won by ${nameOfPlayer1}: ${won1}`;
-lbplayer2.innerText = `Match(s) won by ${nameOfPlayer2}: ${won2}`;
-player.innerText = `First turn ${nameOfPlayer1}`;
-
 turn.forEach((box) => {
     box.addEventListener("click", () => {
         if (player1) {
-            player.innerText = nameOfPlayer2;
-            box.innerText = "O";
+            player.innerText = `Next turn: ${nameOfPlayer2}`;
+            box.innerText = "X";
             box.disabled = true;
             player1 = false;
         } else {
-            player.innerText = nameOfPlayer1;
-            box.innerText = "X";
+            player.innerText = `Next turn: ${nameOfPlayer1}`;
+            box.innerText = "O";
             box.disabled = true;
             player1 = true;
         }
@@ -154,12 +141,8 @@ const resetfunc = () => {
         box.disabled = false;
         box.innerText = "";
     });
-    player.innerText = `First turn ${nameOfPlayer1}`;
+    player.innerText = `First turn: ${nameOfPlayer1}`;
     player1 = true;
-    localStorage.setItem('won1', won1);
-    localStorage.setItem('won2', won2);
-    document.querySelector('.matchWon1').innerText = won1;
-    document.querySelector('.matchWon2').innerText = won2;
 }
 
 const resetscorefunc = () => {
