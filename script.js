@@ -60,21 +60,22 @@ const predictionOfWinner=()=>{
     }
 }
 
-const IsMatchTie=()=>{
-    cnt=0;
-    turn.forEach((box)=>{
-        if(box.disabled===true){
+const IsMatchTie = () => {
+    let cnt = 0;
+    turn.forEach((box) => {
+        if (box.innerText !== "") {
             cnt++;
         }
     });
-    if(cnt===9){
-        modal.style.display="block";
-        results.innerText=`Match is Tie`;
-        turn.forEach(box => {
+    if (cnt === 9) {
+        modal.style.display = "block";
+        results.innerText = `Match is Tie`;
+        turn.forEach((box) => {
             box.disabled = true;
         });
     }
 }
+
 reset.onclick = function() {
     resetmodal.style.display = "none";
     resetfunc();
