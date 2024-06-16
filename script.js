@@ -11,6 +11,11 @@ let close=document.querySelector('.close');
 let reset=document.querySelector('#resetSure');
 let cancel=document.querySelector('#cancel');
 let resetmodal=document.querySelector('.resetmodal');
+let resetscore=document.querySelector('#resetscore');
+let resetscoremsg=document.querySelector('.resetscoremsg');
+let resetmodal2=document.querySelector('.resetmodal2');
+let resetscoreSure=document.querySelector('#resetscoreSure');
+let cancel2=document.querySelector('#cancel2');
 const patternsOfWin=[
     [1,2,3],
     [1,4,7],
@@ -36,9 +41,9 @@ const predictionOfWinner=()=>{
                     turn.forEach(box => {
                         box.disabled = true;
                     });
-                    won1++;
-                    localStorage.setItem('won1', won1);
-                    wonBy1.innerText = won1;
+                    won2++;
+                    localStorage.setItem('won2', won2);
+                    wonBy2.innerText = won2;
                 }
                 else{
                     modal.style.display="block";
@@ -46,9 +51,9 @@ const predictionOfWinner=()=>{
                     turn.forEach(box => {
                         box.disabled = true;
                     });
-                    won2++;
-                    localStorage.setItem('won2', won2);
-                    wonBy2.innerText = won2;
+                    won1++;
+                    localStorage.setItem('won1', won1);
+                    wonBy1.innerText = won1;
                 }
             }
         }
@@ -84,17 +89,38 @@ close.onclick = function() {
     modal.style.display = "none";
     resetfunc();
 }
+resetscore.onclick=function(){
+    resetmodal2.style.display="block";
+    if(won1>won2){
+        let winner=nameOfPlayer1;
+        resetscoremsg.innerText=`${winner} is winner.Are you sure to ResetScore`;
+    }
+    else if(won1<won2){
+        let winner=nameOfPlayer2;
+        resetscoremsg.innerText=`${winner} is winner.Are you sure to ResetScore`;
+    }
+    else{
+        resetscoremsg.innerText="Match is Tie.Are you sure to ResetScore";
+    }
+}
+cancel2.onclick = function() {
+    resetmodal2.style.display="none";
+}
+resetscoreSure.onclick=function(){
+    resetmodal2.style.display="none";
+    resetscorefunc();
+}
 let player1=true;
 let nameOfPlayer1=prompt("Enter your Name:");
 let nameOfPlayer2=prompt("Enter your Name:");
+if(nameOfPlayer1===null){
+    nameOfPlayer1="Player 1";
+}
+if(nameOfPlayer2===null){
+    nameOfPlayer2="Player 2";
+}
 lbplayer1.innerText=`Match(s) won by ${nameOfPlayer1}:`;
 lbplayer2.innerText=`Match(s) won by ${nameOfPlayer2}:`;
-// if(nameOfPlayer1===NULL){
-//     nameOfPlayer1="Player 1";
-// }
-// if(nameOfPlayer2===NULL){
-//     nameOfPlayer2="Player 2";
-// }
 player.innerText=`First turn ${nameOfPlayer1}`;
 turn.forEach((box)=>{
     box.addEventListener("click",()=>{
@@ -126,4 +152,12 @@ const resetfunc=()=>{
     localStorage.setItem('won2', won2);
     document.querySelector('.matchWon1').innerText = won1;
     document.querySelector('.matchWon2').innerText = won2;
+}
+const resetscorefunc=()=>{
+    won1 = 0;
+    won2 = 0;
+    localStorage.setItem('won1', won1);
+    localStorage.setItem('won2', won2);
+    wonBy1.innerText = won1;
+    wonBy2.innerText = won2;
 }
